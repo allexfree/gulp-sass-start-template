@@ -24,7 +24,7 @@ gulp.task('html', function () {
 });
 
 gulp.task('style', function () {
-  gulp.src('source/sass/*.scss')
+  return gulp.src('source/sass/*.scss')
     .pipe(plumber())
     .pipe(sass())
     .pipe(postcss([
@@ -94,28 +94,32 @@ gulp.task('clean', function () {
   return del('build');
 });
 
-gulp.task('build', function (done) {
-  run(
-      'clean',
-      'copy',
-      'webp',
-      'vendor',
-      'sprite',
-      'style',
-      'html',
-      'js',
-      done
-  );
-});
+const build = gulp.series('clean', 'copy', 'webp', 'vendor', 'sprite', 'style', 'html', 'js');
+
+gulp.task('build', build);
+
+// gulp.task('build', function (done) {
+//   run(
+//       'clean',
+//       'copy',
+//       'webp',
+//       'vendor',
+//       'sprite',
+//       'style',
+//       'html',
+//       'js',
+//       done
+//   );
+// });
 
 gulp.task('serve', function () {
   server.init({
     server: ['build/', './']
   });
 
-  gulp.watch('source/*.html', ['html']).on('change', server.reload);
-  gulp.watch('source/js/**/*.js', ['js']).on('change', server.reload);
-  gulp.watch('src/img/*', ['images:update']);
-  gulp.watch('source/sass/**/*.scss', ['style']);
-  gulp.watch('source/img/icons/*.svg', ['sprite']);
+  gulp.watch('source/*.html', gulp.series('html')).on('change', server.reload);
+  gulp.watch('source/js/**/*.js', gulp.series('js')).on('change', server.reload);
+  gulp.watch('src/img/*', gulp.series('images'));
+  gulp.watch('source/sass/**/*.scss', gulp.series('style'));
+  gulp.watch('source/img/icons/*.svg', gulp.series('sprite'));
 });
