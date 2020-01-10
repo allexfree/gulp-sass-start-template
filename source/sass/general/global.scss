@@ -9,14 +9,18 @@ html {
 body {
   display: flex;
   flex-direction: column;
-  height: 100%;
-  margin: 0;
-  padding: 0;
+  // height: 100%;
+  // margin: 0;
+  // padding: 0;
+  min-width: 320px;
+  // height: 100%;
+  margin: 0 auto;
   font-family: $font;
   font-size: 14px;
   font-weight: $regular;
   color: $first-color;
-  background-color: #f8f8f8;
+  overflow-x: hidden;
+  word-wrap: break-word;
 }
 
 main {
