@@ -1,0 +1,19 @@
+@import "../sass/general/variables.scss";
+@import "../sass/general/mixins.scss";
+
+.logo {
+  display: flex;
+  flex-direction: column;
+  margin-right: 167px;
+  pointer-events: auto;
+  &--footer {
+    .logo-link {
+      max-height: 17px;
+    }
+  }
+}
+
+.logo-link {
+  display: block;
+  padding-left: 12px;
+}

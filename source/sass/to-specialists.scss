@@ -1,0 +1,82 @@
+@import "../sass/general/variables.scss";
+@import "../sass/general/mixins.scss";
+
+.to-specialists {
+  display: block;
+  padding-top: 127px;
+  padding-bottom: 181px;
+  background: linear-gradient(to bottom, $light-color-ninth, $light-color-ninth 47px, $light-color-eighth 47px,$light-color-eighth);
+}
+
+.to-specialists-title {
+  display: block;
+  margin-top: 0;
+  margin-bottom: 29px;
+  padding-left: 48.7%;
+  font-size: 36px;
+  font-weight: $medium;
+  line-height: 54px;
+  letter-spacing: 0.2px;
+  color: $darken-color-seventh;
+}
+
+.to-specialist-content {
+  position: relative;
+  @include reset-list;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 48.7%;
+  &::before {
+    content: "";
+    position: absolute;
+    top: -247px;
+    left: -439px;
+    display: block;
+    width: 976px;
+    height: 640px;
+    background-image: url("../img/to-specialists-pseudo.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 0 0;
+  }
+}
+
+.to-specialist-content__item {
+  position: relative;
+  display: block;
+  padding-left: 18px;
+  &::before {
+    content: "";
+    position: absolute;
+    top: 9px;
+    left: 3px;
+    display: block;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background-color: $darken-color-third;
+  }
+
+  &:nth-child(2) {
+    padding-right: 91px;
+  }
+
+  &:nth-child(3) {
+    padding-right: 102px;
+  }
+
+  &:nth-child(4) {
+    padding-right: 72px;
+  }
+}
+
+.to-specialist-content__text {
+  display: block;
+  margin-top: 0;
+  font-size: 16px;
+  font-weight: $medium;
+  line-height: 24px;
+  letter-spacing: 0.1px;
+  color: $darken-color-second;
+}

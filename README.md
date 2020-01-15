@@ -1,2 +1,3 @@
-# gulp-sass-start-template
-Build project using gulp and sass preprocessor (scss syntax)
+LP layout for red soft
+
+Рабочий пример http://t9213983.beget.tech/redsoft/

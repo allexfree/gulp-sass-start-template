@@ -1,0 +1,74 @@
+@import "../sass/general/variables.scss";
+@import "../sass/general/mixins.scss";
+
+.func {
+  display: block;
+  padding: 151px 0 63px;
+  background-image: url("../img/func-bg.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 0 0;
+}
+
+.func-title {
+  display: block;
+  padding-left: 14px;
+  margin-top: 0;
+  margin-bottom: 51px;
+  font-size: 36px;
+  font-weight: $medium;
+  line-height: 54px;
+  letter-spacing: 0.3px;
+  color: $darken-color-second;
+  text-align: center;
+}
+
+.func-content {
+  @include reset-list;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 1160px;
+  margin: 0 auto;
+}
+
+.func-content__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 33%;
+  padding: 0 15px;
+  margin-bottom: 63px;
+  &:first-child,
+  &:nth-child(4) {
+    transform: translateX(-6px);
+  }
+
+  &:nth-child(2),
+  &:nth-child(5) {
+    transform: translateX(8px);
+  }
+
+  &:nth-child(3),
+  &:nth-child(6) {
+    transform: translateX(21px);
+  }
+
+  &:nth-child(6) {
+    .func-content__item-text {
+      padding: 0 60px;
+    }
+  }
+}
+
+.func-content__item-text {
+  display: block;
+  width: 100%;
+  padding: 0 65px;
+  font-size: 16px;
+  font-weight: $medium;
+  line-height: 24px;
+  letter-spacing: 0.1px;
+  color: $darken-color-second;
+  text-align: center;
+}

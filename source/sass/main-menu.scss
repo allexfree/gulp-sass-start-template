@@ -1,0 +1,57 @@
+@import "../sass/general/variables.scss";
+@import "../sass/general/mixins.scss";
+
+.main-menu {
+  display: block;
+  pointer-events: auto;
+}
+
+.main-menu__list {
+  @include reset-list;
+  display: flex;
+  padding: 7px 0 0 32px;
+}
+
+.main-menu__item {
+  display: block;
+  margin-right: 54px;
+  &:nth-child(2) {
+    margin-right: 51px;
+  }
+
+  &:nth-child(3) {
+    margin-right: 52px;
+  }
+
+  &:last-child {
+    margin-right: 0;
+  }
+}
+
+.main-menu__link {
+  position: relative;
+  display: block;
+  font-size: 16px;
+  font-weight: $bold;
+  color: $light-color-second;
+  outline: none;
+  transition: color 0.3s;
+  &--active {
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      display: block;
+      width: 4px;
+      height: 4px;
+      background-color: $light-color-third;
+      border-radius: 50%;
+    }
+  }
+
+  &:hover,
+  &:focus {
+    color: $darken-color-fourth;
+  }
+}

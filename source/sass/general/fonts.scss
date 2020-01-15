@@ -1,7 +1,39 @@
 @font-face {
   font-weight: normal;
-  font-family: "Roboto";
+  font-family: "Geometria";
   font-style: normal;
   font-display: swap;
-  src: url("../fonts/RobotoRegular.woff2") format("woff2"), url("../fonts/RobotoRegular.woff") format("woff");
+  src: url("../fonts/Geometria-Medium.woff2") format("woff2");
+}
+
+@font-face {
+  font-weight: normal;
+  font-family: "CeraRoundPro";
+  font-style: normal;
+  font-display: swap;
+  src: url("../fonts/CeraRoundPro-Bold.woff2") format("woff2");
+}
+
+@font-face {
+  font-weight: normal;
+  font-family: "CeraRoundPro";
+  font-style: normal;
+  font-display: swap;
+  src: url("../fonts/CeraRoundPro-Light.woff2") format("woff2");
+}
+
+@font-face {
+  font-weight: normal;
+  font-family: "CeraRoundPro";
+  font-style: normal;
+  font-display: swap;
+  src: url("../fonts/CeraRoundPro-Medium.woff2") format("woff2");
+}
+
+@font-face {
+  font-weight: normal;
+  font-family: "CeraRoundPro";
+  font-style: normal;
+  font-display: swap;
+  src: url("../fonts/CeraRoundPro-Regular.woff2") format("woff2");
 }

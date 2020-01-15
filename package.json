@@ -1,7 +1,7 @@
 {
-  "name": "gulp-scss-template",
+  "name": "lp-layout",
   "version": "1.0.0",
-  "description": "projects build on sass syntax with gulp",
+  "description": "test for red soft digital agency",
   "main": "gulpfile.js",
   "dependencies": {
     "rimraf": "^3.0.0"

@@ -1,0 +1,75 @@
+@import "../sass/general/variables.scss";
+@import "../sass/general/mixins.scss";
+
+.page-footer {
+  display: block;
+  background-color: $darken-color-eighth;
+}
+
+.page-footer__topline {
+  display: flex;
+  justify-content: space-between;
+  padding: 63px 0 49px 0;
+  border-bottom: 1px solid $darken-color-sixth;
+}
+
+.page-footer__nav {
+  display: block;
+}
+
+.page-footer__nav-list {
+  @include reset-list;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.page-footer__nav-item {
+  display: block;
+  margin-right: 73px;
+  &:last-child {
+    margin-right: 0;
+  }
+}
+
+.page-footer__nav-link {
+  display: block;
+  font-size: 16px;
+  font-weight: $medium;
+  line-height: 24px;
+  color: $light-color-second;
+  outline: none;
+  transition: opacity 0.3s;
+
+  &:hover,
+  &:focus {
+    opacity: 0.7;
+  }
+}
+
+.page-footer__bottomline {
+  display: flex;
+  justify-content: center;
+  padding: 32px 0 16px 0;
+}
+
+.page-footer__bottomline-text {
+  display: flex;
+  flex-wrap: wrap;
+  padding-left: 14px;
+  margin-top: 0;
+  color: $light-color-first;
+  line-height: 21px;
+}
+
+.page-footer__bottomline-link {
+  display: block;
+  padding-left: 4px;
+  line-height: 21px;
+  color: $accent-color-first;
+  outline: none;
+  transition: opacity 0.3s;
+  &:hover,
+  &:focus {
+    opacity: 0.7;
+  }
+}
