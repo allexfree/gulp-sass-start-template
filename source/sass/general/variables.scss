@@ -1,43 +1,15 @@
 /* Colors */
-
 $first-color: #111111;
-$trpnt: transparent;
-
-$light-color-first: #ffffff;
-$light-color-second: #fdfffc;
-$light-color-third: #fafbfd;
-$light-color-fourth: #f0f5ff;
-$light-color-fifth: #e3e7f2;
-$light-color-sixth: #f8f8f8;
-$light-color-seventh: #fafaff;
-$light-color-eighth:#f2f2f9;
-$light-color-ninth:#faf9ff;
-$light-color-tenth: #e2ebf8;
-$light-color-eleventh: #e4ecf8;
-$light-color-twelfth: #e4e6f1;
-
-
-
-$darken-color-first: #5489c3;
-$darken-color-second: #60759d;
-$darken-color-third: #16afe0;
-$darken-color-fourth: #a8b2bf;
-$darken-color-fifth: #4f699b;
-$darken-color-sixth: #335b91;
-$darken-color-seventh: #31496b;
-$darken-color-eighth: #39649d;
-
-$rgba-darken-color-first: rgba(22, 175, 224, 0.25);
-$rgba-darken-color-second: rgba(35, 179, 226, 0.4);
-
-$accent-color-first: #e70067;
-
+$second-color: #ffffff;
 
 /* Fonts */
-
-$font: "CeraRoundPro", "Arial", sans-serif;
-$font-second: "Geometria", "Arial", sans-serif;
-$light: 300;
+$font: "Roboto", "Arial", sans-serif;
 $regular: 400;
-$medium: 500;
 $bold: 700;
+
+/* Media */
+
+$media-lg: 1440px;
+$media-md: 1024px;
+$media-sm: 768px;
+$media-xs: 480px;

@@ -19,7 +19,7 @@ var server = require('browser-sync').create();
 
 gulp.task('html', function () {
   return gulp.src('source/*.html')
-    // .pipe(htmlmin({collapseWhitespace: true}))
+    .pipe(htmlmin({collapseWhitespace: true}))
     .pipe(gulp.dest('build'));
 });
 
@@ -83,8 +83,7 @@ gulp.task('copy', function () {
   return gulp.src([
     'source/fonts/**/*.{woff,woff2}',
     'source/img/**',
-    'source/js/**',
-    'source/*.php'
+    'source/js/**'
   ], {
     base: 'source'
   })

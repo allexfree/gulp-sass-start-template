@@ -47,3 +47,30 @@ $double-dpx: 1.5dppx;
     }
   }
 }
+
+
+/* Media */
+
+@mixin media-lg {
+  @media (max-width: $media-lg) {
+    @content;
+  }
+}
+
+@mixin media-md {
+  @media (max-width: $media-md) {
+    @content;
+  }
+}
+
+@mixin media-sm {
+  @media (max-width: $media-sm) {
+    @content;
+  }
+}
+
+@mixin media-xs {
+  @media (max-width: $media-xs) {
+    @content;
+  }
+}
