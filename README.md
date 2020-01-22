@@ -1,2 +1,2 @@
 # gulp-sass-start-template
-Build project using gulp and sass preprocessor (scss syntax)
+Build project using gulp4 + sass preprocessor (scss syntax) + babel + webpack.

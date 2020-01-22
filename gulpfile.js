@@ -1,25 +1,43 @@
 'use strict';
 
-var gulp = require('gulp');
-var sass = require('gulp-sass');
-var minify = require('gulp-csso');
-var htmlmin = require('gulp-htmlmin');
-var imagemin = require('gulp-imagemin');
-var plumber = require('gulp-plumber');
-var postcss = require('gulp-postcss');
-var svgstore = require('gulp-svgstore');
-var rename = require('gulp-rename');
-var uglify = require('gulp-uglify-es').default;
-var webp = require('gulp-webp');
-var pump = require('pump');
-var run = require('run-sequence');
-var del = require('del');
-var autoprefixer = require('autoprefixer');
-var server = require('browser-sync').create();
+const gulp = require('gulp'),
+      sass = require('gulp-sass'),
+      minify = require('gulp-csso'),
+      htmlmin = require('gulp-htmlmin'),
+      imagemin = require('gulp-imagemin'),
+      plumber = require('gulp-plumber'),
+      postcss = require('gulp-postcss'),
+      svgstore = require('gulp-svgstore'),
+      rename = require('gulp-rename'),
+      uglify = require('gulp-uglify-es').default,
+      webp = require('gulp-webp'),
+      pump = require('pump'),
+      run = require('run-sequence'),
+      del = require('del'),
+      autoprefixer = require('autoprefixer'),
+      gulpWebpack = require('webpack-stream'),
+      babel = require('gulp-babel'),
+      server = require('browser-sync').create();
+
+let webpackConfig = {
+  output: {
+    filename: 'all.js'
+  },
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        loader: 'babel-loader',
+        exclude: '/node-modules/'
+      }
+    ]
+  },
+  mode: 'none'
+};
 
 gulp.task('html', function () {
   return gulp.src('source/*.html')
-    .pipe(htmlmin({collapseWhitespace: true}))
+    // .pipe(htmlmin({collapseWhitespace: true}))
     .pipe(gulp.dest('build'));
 });
 
@@ -28,7 +46,9 @@ gulp.task('style', function () {
     .pipe(plumber())
     .pipe(sass())
     .pipe(postcss([
-      autoprefixer()
+      autoprefixer({
+        grid: 'autoplace'
+      })
     ]))
     .pipe(gulp.dest('build/css'))
     .pipe(minify())
@@ -72,18 +92,30 @@ gulp.task('vendor', function () {
 gulp.task('js', function (cd) {
   pump([
     gulp.src('source/js/**/*.js'),
-    uglify(),
-    rename({suffix: '.min'}),
-    gulp.dest('build/js'),
+    // uglify(),
+    // rename({suffix: '.min'}),
+    // gulp.dest('build/js'),
     server.stream()
   ], cd);
+});
+
+gulp.task('webpack', function () {
+  return gulp.src('source/js/index.js')
+  .pipe(babel({
+    presets: ['@babel/preset-env']
+  }))
+  .pipe(gulpWebpack(webpackConfig))
+  .pipe(uglify())
+  .pipe(rename({suffix: '.min'}))
+  .pipe(gulp.dest('build/js'))
+  .pipe(server.stream());
 });
 
 gulp.task('copy', function () {
   return gulp.src([
     'source/fonts/**/*.{woff,woff2}',
     'source/img/**',
-    'source/js/**'
+    // 'source/js/**'
   ], {
     base: 'source'
   })
@@ -94,7 +126,7 @@ gulp.task('clean', function () {
   return del('build');
 });
 
-const build = gulp.series('clean', 'copy', 'webp', 'vendor', 'sprite', 'style', 'html', 'js');
+const build = gulp.series('clean', 'copy', 'webp', 'vendor', 'sprite', 'style', 'html', 'js', 'webpack');
 
 gulp.task('build', build);
 
@@ -119,6 +151,7 @@ gulp.task('serve', function () {
 
   gulp.watch('source/*.html', gulp.series('html')).on('change', server.reload);
   gulp.watch('source/js/**/*.js', gulp.series('js')).on('change', server.reload);
+  gulp.watch('source/js/**/*.js', gulp.series('webpack')).on('change', server.reload);
   gulp.watch('src/img/*', gulp.series('images'));
   gulp.watch('source/sass/**/*.scss', gulp.series('style'));
   gulp.watch('source/img/icons/*.svg', gulp.series('sprite'));
